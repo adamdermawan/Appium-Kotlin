@@ -4,27 +4,35 @@ import io.appium.java_client.AppiumBy
 import org.junit.jupiter.api.Test
 import org.openqa.selenium.By
 import org.openqa.selenium.Keys
+import java.time.Duration
 
 class SampleTest : AppiumAbstract() {
 
+    fun delay(delay: Long){
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(delay))
+    }
+
     @Test
-    fun testSampleApp() {
-        // Your test logic here
+    fun fillFormComponent() {
         // ./gradlew test
 
-        val login = driver.findElement(AppiumBy.accessibilityId("input_email_or_phone_number"))
-        val pass = driver.findElement(AppiumBy.accessibilityId("input_password"))
-        val btnLogin = driver.findElement(AppiumBy.accessibilityId("button_login"))
+        delay(10)
+        val form = driver.findElement(AppiumBy.accessibilityId("Forms"))
+        form.click()
 
-        login.click()
-        login.clear()
-        login.sendKeys("...")
+        val inputField = driver.findElement(AppiumBy.accessibilityId("text-input"))
+        val someNote = driver.findElement(AppiumBy.accessibilityId("input-text-result"))
+        val switch = driver.findElement(AppiumBy.accessibilityId("switch"))
+        //dropdown
+        val activeButton = driver.findElement(By.
+        xpath("//android.widget.TextView[@text='Active']"))
 
-        pass.click()
-        pass.clear()
-        pass.sendKeys("...")
-
-        btnLogin.click()
+        form.click()
+        inputField.sendKeys("Sulthan Tampan Sekaleee")
+        someNote.click()
+        //someNote.sendKeys("Babang Sulthan tampan sekaleee")
+        switch.click()
+        activeButton.click()
 
     }
 
