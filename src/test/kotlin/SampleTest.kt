@@ -34,6 +34,10 @@ class SampleTest : AppiumAbstract() {
         switch.click()
         activeButton.click()
 
+        //I am Handsome
+        //i the greatest hehehehe
+
+
     }
 
 }
